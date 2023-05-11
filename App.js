@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const studentsRouter = require('./src/routes/studentsRouter')
 const profileRouter = require('./src/routes/profileRouter')
 const notificationRouter = require('./src/routes/notificationRouter')
@@ -8,6 +9,9 @@ const postRouter = require('./src/routes/postRouter')
 const reportRouter = require('./src/routes/reportRouter')
 const suggestionRouter = require('./src/routes/suggestionRouter')
 const app = express()
+var bodyParser = require('body-parser')
+const RegisterRouter = require('./src/routes/api/RegisterRouter')
+const signinRouter = require('./src/routes/api/signinRouter')
 
 app.use(express.static('./public'))
 app.set('view engine','ejs')
@@ -38,10 +42,43 @@ app.get('/', (req, res)=> {
    app.use('/suggestionRouter',suggestionRouter)
 
   
+
+
+   app.use(express.static('./public'))
+app.set('view engine','ejs')
+app.set('views','./src/views')
+app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser())
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    res.setHeader( 
+      "Access-Control-Allow-Methods",
+      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    next();
+  });
+
+
+
+  app.use('/api/register/',RegisterRouter)
+  app.use('/api/login/',signinRouter)
   
 
 
-app.listen(3000,()=>{
-    console.log("server started at http://localhost:3000")
-}
-)
+   const MONGODB_URL=
+   "mongodb+srv://anshajmaitexa:1234@cluster0.kn4gexk.mongodb.net/NSS_db?retryWrites=true&w=majority"
+   
+   
+   const port=2000;
+   
+   mongoose.connect(MONGODB_URL).then(()=>{
+       app.listen(port,()=>{
+           console.log(`server running on port http://localhost:2000/admin`);
+       })
+   }).catch((error)=>{
+       console.log(` ${error} did not connect`); 
+   })
