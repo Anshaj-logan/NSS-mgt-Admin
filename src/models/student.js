@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
 const studentSchema = new schema({
-    
-    name : {type:String},
+    login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
+    // name : {type:String},
     course : {type:String},
     semester : {type:String},
     acdamic_year : {type:String},
