@@ -13,6 +13,7 @@ var bodyParser = require('body-parser')
 const RegisterRouter = require('./src/routes/api/RegisterRouter')
 const signinRouter = require('./src/routes/api/signinRouter')
 const volRouter = require('./src/routes/api/volRouter')
+const codRouter = require('./src/routes/api/codRouter')
 
 app.use(express.static('./public'))
 app.set('view engine','ejs')
@@ -68,6 +69,7 @@ app.use((req, res, next) => {
   app.use('/api/register/',RegisterRouter)
   app.use('/api/login/',signinRouter)
   app.use('/api/vol/',volRouter)
+  app.use('/api/cod/',codRouter)
   
 
 

@@ -5,7 +5,7 @@ const schema = mongoose.Schema
 
 const studentSchema = new schema({
     login_id:{type:mongoose.Types.ObjectId,ref:"login_tb"},
-    // name : {type:String},
+    name : {type:String},
     course : {type:String},
     semester : {type:String},
     acdamic_year : {type:String},

@@ -150,7 +150,7 @@ RegisterRouter.post('/student', async (req, res) => {
         const result = await login(log).save()
         var reg = {
             login_id: result._id,
-            // name :req.body.name, 
+            name :req.body.name, 
             semester:req.body.semester,
             phone_no:req.body.phone_no,
             address:req.body.address,
