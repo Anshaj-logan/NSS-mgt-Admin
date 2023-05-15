@@ -102,7 +102,9 @@ RegisterRouter.post('/volunteer', async (req, res) => {
             dob:req.body.dob,
             activity:req.body.activity,
             course:req.body.course,
-            acdamic_year:req.body.acdamic_year
+            acdamic_year:req.body.acdamic_year,
+            department:req.body.department,
+            address:req.body.address
             
             
 

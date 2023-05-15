@@ -16,6 +16,7 @@ const volunteerSchema = new schema({
     semester : {type:String},
     activity : {type:String},
     acdamic_year:{type:String},
+    address:{type:String}
     
 })
 
