@@ -2,6 +2,8 @@ const express = require('express')
 const student = require('../../models/student')
 const test = require('../../models/Addtestdetails')
 const interview = require('../../models/Addint')
+const volunteer = require('../../models/volunteer')
+
 
 
 
@@ -61,6 +63,22 @@ codRouter.post('/add-interview', async (req, res) => {
         res.status(500).json({ success: false, error: true, message: "Something went wrong" });
         console.log(error);
     }
+
+})
+codRouter.get('/view-voluntiers', (req, res) => {
+    student.find()
+        .then((data) => {
+            res.status(200).json({
+                success: true,
+                error: false,
+                data: data
+            })
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "something wrong"
+            })
+        })
 
 })
 

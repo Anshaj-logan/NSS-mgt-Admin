@@ -35,7 +35,7 @@ signinRouter.post("/", async (req, res) => {
                         role: oldUser.role,
                         status:oldUser.status,
                         login_id: oldUser._id,
-                        student_id: coDetails._id
+                        co_id: coDetails._id
                     })
                 }
             }
@@ -76,7 +76,7 @@ signinRouter.post("/", async (req, res) => {
                         role: oldUser.role,
                         status:oldUser.status,
                         login_id: oldUser._id,
-                        worker_id: stdDetails._id
+                        std_id: stdDetails._id
                     })
                 }
             }
@@ -96,7 +96,7 @@ signinRouter.post("/", async (req, res) => {
                         role: oldUser.role,
                         status:oldUser.status,
                         login_id: oldUser._id,
-                        worker_id: almDetails._id
+                        alm_id: almDetails._id
                     })
                 }
             }
