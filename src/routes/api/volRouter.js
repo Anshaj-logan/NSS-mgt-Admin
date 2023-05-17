@@ -1,5 +1,7 @@
 const express = require('express')
 const volunteer = require('../../models/volunteer')
+const volAttentence = require('../../models/Addvolattentence')
+
 
 
 const volRouter = express.Router()
@@ -42,6 +44,38 @@ volRouter.post('/update-volunteer-profile/:id', (req, res) => {
             message: "Something went Wrong!"
         })
     })
+
+})
+volRouter.get('/view-attentence/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        volAttentence.find({ vol_id
+            : id, status:"0" })
+            .then(function (data) {
+                if (data == 0) {
+                    
+                    return res.status(401).json({
+                        success: false,
+                        error: true,
+                        message: "No Data Found!"
+                    })
+                }
+                else {
+                    return res.status(200).json({
+                        success: true,
+                        error: false,
+                        data: data
+                    })
+                }
+            })
+    } catch (error) {
+        return res.status(200).json({
+            success: true,
+            error: false,
+            message: "Something went wrong"
+        })
+    }
+
 
 })
 module.exports = volRouter
